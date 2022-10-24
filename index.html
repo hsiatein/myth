@@ -1,0 +1,599 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>芭万希</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><p><span>中文常见译名还有芭班·希，个人认为那是将苏格兰盖尔语中的 Baobhan sith 直接当做英文发音而音译出的名字，至于其在苏格兰语中的发音用英语究竟怎么读，很多地方指出为 baavan shee 或 buhvan shee 或 baa&#39;van see，而换到中文均音近芭万·希而非芭班·希，所以本文章统一翻作芭万·希。此外，本人没有翻译人名的习惯，且会保留书名不翻译来方便读者找书。</span></p><p><span>此外，芭万·希毕竟只是传说，关于芭万·希的传说有非常多的版本，我将把尽可能多的版本翻译在此。（例如有些地方认为其是魅魔，有些认为是吸血鬼）</span></p><p><span>至于为什么要翻译这些，看我的名字就知道了罢（</span></p><p><img src="https://i0.hdslb.com/bfs/article/80f4a2fc23c01436a549e466305dcb73ee6977eb.png@206w_188h_progressive.webp" referrerpolicy="no-referrer" alt="img"></p><p><span>说点无关的，fgo里芭万希的技能——妖精吸血，应该是从传说中吸取男性猎人的血液而来的。兄弟，一定要看芭万希啊，芭万希是真的漂亮，吸我的血我也愿意啊。</span></p><p><img src="https://i0.hdslb.com/bfs/article/a74f00d4d354ebf2c52efbfc3de234fb60c7d0b3.png@675w_1154h_progressive.webp" referrerpolicy="no-referrer" alt="img"></p><p><span>fgo七周年英灵梦装：芭万希</span>
+<span>后续可能还会翻译一些其他的神话传说生物的文献，比方说我的xp，精灵。妖精耳根据色调不同既可以凸显妖艳的美丽又可以凸显圣洁的美丽。</span></p><p><span>以下内容翻译自书 An Encyclopedia of Fairies: Hobgoblins, Brownies, Bogies, and Other Supernatural Creatures</span></p><p><span>作者 Katharine Mary Briggs</span></p><p>&nbsp;</p><p><span>芭万·希（读音baavan shee）</span></p><p><span>这个出自高地（指苏格兰高地）的单词同BAN-SHEE，意思是女性妖精，但是被专门用来指一种非常危险和邪恶的魅魔，D. A. Mackenzie在Scottish Folklore and Folk Life的第236页复述了一个来自C. M. Robertson所著的Folklore from the West of Ross-shire中的故事。</span></p><p><span>四个年轻男子在打猎途中，并在一个空牧羊小屋里待了一晚，那个屋子是用来给绵羊在气候恶劣的季节提供庇护的。他们跳起舞来，其中一个人提供口乐（由后文来看，应该指的是哼出的音乐），其中一个跳舞的人希望他们能有舞伴。几乎于此同时，四个女人走了进来，其中三个女人在跳舞，第四个女人站在发出音乐的男人旁边。但是男人在哼着音乐时，看见了从跳舞的人身上滴落的血，便逃出了牧羊小屋，并被他的恶魔舞伴追逐着。男人在马群中避难，而芭万·希没法抓到他，有可能是因为马群所踏的马蹄铁里的铁。但是芭万·希围着男人打转了一整晚，且只在太阳升起时消失了。他回到牧羊小屋，发现了跳舞的男人们失尽血的身体躺在地上。他们的舞伴把他们吸干了。</span></p><p><span>以下内容翻译自书 Encyclopedia of Spirits: The Ultimate Guide to the Magic of Fairies, Genies, Demons, Ghosts, Gods &amp; Goddesses</span></p><p><span>作者Judika Illes</span></p><p><span>发音：buhvan shee</span></p><p><span>起源：苏格兰</span></p><p><span>芭万·希是苏格兰高地的妖精，她们的名字字面意思是“女性妖精”或“sidhe的女性”（sidhe是爱尔兰地区凯尔特神话的一种超自然的种族，在苏格兰地区读作sith，也就是妖精）并且因此她和报丧女妖是同源的，但是她们是完全不同的妖精。和报丧女妖不同的是，芭万·希是杀手，有时被称为苏格兰的吸血鬼。</span></p><p><span>芭万·希喜欢跳一整夜的舞。根据一些传说，她们勾引男人，与他们跳舞并杀死他们，吸他们的血。很难确定这是否为她们的本性，或是在后基督教时代被编造来阻止潜在的信徒参与妖精的舞蹈（有一说一啊，要是芭万希真来邀我，还拦得住我？）。芭万·希最喜欢的受害者是旷野外的猎人们。她们可能是惩罚那些没有办正确的仪式就狩猎的人的鹿女神。又或者，她们只是跳舞的吸血鬼。</span></p><p><span>表现：她们通常表现为美丽的女性，但并不总是穿着绿色衣服。她们身份的正确线索是她们的脚。那些女士运动着鹿蹄，而不是人脚。她们可以变换外形：准备感到惊讶（译者有两种理解，一是芭万·希在受到刺激时会变换外形逃走，二是让我们做好惊讶的准备，因为芭万希说不定突然变换形态给我们来个惊喜，个人认为第二种可能性更大些）。</span></p><p><span>圣鸟（个人感觉这么翻有点奇怪，但是也不知道还能怎么翻）：乌鸦和渡鸦</span></p><p><span>颜色：绿色</span></p><p><span>以下内容翻译自书 The Element Encyclopedia of Fairies</span></p><p><span>作者 Lucy Cooper</span></p><p><span>（有一说一，内容少得有点搞笑）</span></p><p><span>芭万·希</span></p><p><span>苏格兰民间传说的一种美丽但邪恶的妖精，目的是引诱她的受害者并吸血直到他们死亡的一直魅魔。</span></p><p><span>以下内容翻译自书 Spirits, fairies, gnomes, goblins : an encyclopedia of the little people</span></p><p><span>作者 ABC-CLIO, LLC, Carol Rose</span></p><p><span>芭万·希</span></p><p><span>尽管这个苏格兰盖尔语名字和爱尔兰语的报丧女妖有完全相同的意思“女性妖精”，不过在苏格兰高地，这个名字指的是一种美丽但是邪恶的女妖。她们通常身着绿色衣服，并且如果她们以人类形态来示人可以从她们的鹿蹄来辨认，但是她们也可能变成乌鸦或渡鸦的样子。芭万·希以人类的血为食，特别是荒野上的年轻男猎人的血。D. A. Mackenzie 在他的 Scottish Folklore and Folk Life 书里讲，四个年轻男猎人在牧羊小屋里休息过夜，他们想要陪伴，并且在四位漂亮女性进入后非常高兴。当一个猎人给其他人提供音乐时，他注意到那些“女人”有蹄子以及从他们身上滴落的血，于是他逃出去躲在马群里，那些马的铁鞋（马蹄铁）可以做保护。他意识到了她们是可怕（可爱）的芭万·希，而他的同伴们则向这些女恶魔的魅力屈服了。他的超自然的同伴芭万·希（与上面的同伴有所区分，芭万希们是中途进屋子成为同伴）竭尽所能也没法抓住他，并且她在太阳升起时消失了。之后，恐怖的是，他发现了他的同伴们（指猎人）被吸干血的身体。</span></p><p>&nbsp;</p><p><span>以下内容翻译自芭万·希的英文wiki</span></p><p><a href='https://en.wikipedia.org/wiki/Baobhan_sith' target='_blank' class='url'>https://en.wikipedia.org/wiki/Baobhan_sith</a></p><p><span>Baobhan sith 芭万·希</span></p><p><span>The baobhan sith is a female fairy in the folklore of the Scottish Highlands, though they also share certain characteristics in common with the succubus. They appear as beautiful women who seduce their victims before attacking them and killing them.</span></p><p><span>芭万·希是苏格兰高地民间传说中的女性妖精，不过她们也有某些和魅魔相同的特征。她们看起来像美丽的女性，会勾引受害者并袭击、杀死他们。</span></p><p><span>（是的，译者就是被芭万·希勾引的那个）</span></p><p><span>According to the Scottish folklorist Donald Alexander Mackenzie, the baobhan sith usually appears as a beautiful young woman wearing a long green dress that conceals the deer hooves she has instead of feet. She may also take the form of a hooded crow or raven.</span></p><p><span>根据苏格兰民俗学家 Donald Alexander Mackenzie 的说法，芭万·希通常看上去是年轻漂亮的女人，身着绿色长裙以遮掩住她那并非人脚的鹿蹄。她也可能变成一只乌鸦或者渡鸦。</span></p><p><span>There are numerous stories about the baobhan sith with a general theme of hunters being attacked in the wilderness at night. In one tale recorded by Mackenzie, there were four men who went hunting and took shelter for the night in a lonely shieling or hut. One of the men supplied vocal music while the others began dancing. The men expressed a desire for partners to dance with, and soon after that four women entered the hut. Three of them danced while the fourth sat beside the vocalist. He then noticed drops of blood falling from his companions and fled from the hut, taking refuge among the horses. His partner chased him but was unable to catch him, and when daylight came she disappeared. The man went back inside and found all three of his friends dead and drained of blood. </span></p><p><span>有很多关于芭万·希的故事，主题都是猎人在夜晚的野外被袭击。在 Mackenzie 记录的一个故事里，四个外出打猎的男人晚上在一个孤独的小屋里过夜。其中一个男人在唱歌，而另外几个男人则在跳舞。男人们想要几个舞伴来一起跳舞，不久后四个女人进入了小屋。其中三个女人在跳舞而第四个女人则坐在唱歌的男人旁边。一会儿后唱歌的男人注意到他的同伴滴落的血，便逃离出了小屋，在马群中避难。他的舞伴（指坐在唱歌男子旁边的那个芭万·希）追他但是却没办法抓到，当白昼来临，她消失了。那个男人回去发现他的三个朋友死了并且血液被喝干了。</span></p><p><span>The folklorist Katharine Briggs suggested that the baobhan sith was unable to catch the fourth man among the horses because of the iron with which the horses were shod, iron being a traditional fairy vulnerability.</span></p><p><span>民俗学家 Katharine Briggs 认为，芭万·希抓不到躲在马群里的第四个男人是因为马所踏的马蹄铁里的铁，铁一直是妖精的弱点。</span></p><p><span>In a similar tale one of the men noticed that the women had deer hooves instead of feet and fled from them. He returned the next morning to find that the other hunters had their &quot;throats cut and chests laid open&quot;.</span></p><p><span>在类似的故事里，那群男人中的一位注意到那些女人长着鹿蹄而非人脚，便从他们之中逃走了。当他隔天早上回来时，发现另外的猎人们被切开喉咙破开胸膛。</span></p><p><span>In a third story the hunters took refuge in a cave. Each of the men said he wished his own sweetheart were there that night, but one of them, named Macphee, who was accompanied by his black dog, said he preferred his wife to remain at home. At that moment a group of young women entered the cave, and the men who had wished for their sweethearts were killed. Macphee was protected by his dog who drove the women from the cave.</span></p><p><span>在第三个故事里，猎人们在洞穴里避难。那个晚上，每个男人都说想要他的爱人在这，但是除了他们中的一个名字叫 Macphee 的人，Macphee 有他的黑狗陪着，说他更希望他的老婆待在家里。与此同时，一群年轻女人进入洞穴，并且那些想要他们的爱人的男人都被杀了。Macphee 的狗把女人们驱赶出了洞穴，保护了 Macphee。</span></p><p><span>One recurring motif in these stories is that the baobhan sith appear almost immediately after the hunters express their desire for female companionship. This is connected with a traditional Scottish belief that if one were to make a wish at night without also invoking God&#39;s protection, then that wish would be granted in some terrible manner.</span></p><p><span>这些故事一个反复出现的主题是，芭万希几乎立即出现在猎人表达对女性陪伴的渴望后。这和一个传统的苏格兰信仰有关系，即如果一个人晚上许下愿望而不祈求上帝的保佑，那么那个愿望将以某种可怕的方式实现。</span></p><p><span>以下内容翻译自 THE SCOTSMAN（苏格兰人报）</span></p><p><a href='https://www.scotsman.com/whats-on/arts-and-entertainment/tale-scottish-banshees-baobhan-sith-1479692' target='_blank' class='url'>https://www.scotsman.com/whats-on/arts-and-entertainment/tale-scottish-banshees-baobhan-sith-1479692</a></p><p><span>The tale of Scottish banshees: Baobhan Sith</span></p><p><span>苏格兰女妖的故事：芭万希</span></p><p><span>THE LEGENDARY Baobhan Sith, pronounced baa&#39;van see, are also known as the White Women of the Scottish Highlands. These mystical creatures took the form of a beautiful woman, lurking the Highlands, waiting to seduce young travellers and drink their blood.</span></p><p><span>传奇的芭万希，读音 baa&#39;van see，也被称为苏格兰高地的白色女人（译者也不清楚到底指人种还是形容芭万希的皮肤颜色，姑且采取保守的翻译怎么解释都行）。这些神话的生物有美丽女人的外型，潜伏在苏格兰高地，等待着引诱年轻旅行者并吸干他们的血。</span></p><p><span>Thought to be fairies, the Baobhan Sith were generally withdrawn from society, unlike their sucubi counterparts. They didn’t care about power, wealth or youth. They only cared about feeding - luring young hunters in by inviting them to dance with them until they grew too exhausted to overpower the Baobahn Sith. They would then feed upon their helpless victims, draining them dry of blood.</span></p><p><span>被看作是妖精的芭万·希一般远离社会，不像她们的同行sucubi（译者猜测指Succubus，魅魔）。她们不关心权利，财富或青年。她们只想邀请年轻猎人共舞来勾引猎人们，直到猎人们变得精疲力尽而没法制服芭万·希。然后她们会以这些无助的受害者为食，喝光他们的血。</span></p><p><span>Unlike vampires, the Baobhan Sith would use their long, sharp fingernails to slit their victims necks in order to drink their blood.</span></p><p><span>与吸血鬼不同，芭万·希会用她们的长而锋利的指甲划开受害者的脖子来喝他们的血液。</span></p><p><span>Settled in the mountains and forests, the Baobhan Sith would often lure in Highland hunters, drawn to the men by the smell of blood from their kills.</span></p><p><span>居住在山里或森林里的芭万·希经常会引诱高地的猎人们进入，芭万·希是被他们杀死的猎物的血的气味吸引的。</span></p><p><span>Legend has it the these women had hooves instead of feet, which they keep hidden under their long dresses. And unlike their vampire cousins who were fond of shape shifting into bats, the Baobhan Sith favoured a wolf form.</span></p><p><span>传说中那些女人有蹄子而没有人脚，被隐藏在她们的长裙下。并且不像她们的吸血鬼姐妹喜欢变成蝙蝠，芭万·希偏爱变成狼的外形。</span></p><p><span>There were never any known male Baobhan Sith, but if a woman is killed by these creatures, she will turn into one.</span></p><p><span>从没有过已知的男性芭万·希，不过如果一个女人被这些生物杀死，她将会变成一个芭万希（这里指的应该是变成女性芭万希）。</span></p><p><span>The Baobhan Sith had only two known weaknesses - they had a fear of horses and they are vulnerable to iron, the only known substance which can kill them.</span></p><p><span>芭万·希只有两个已知的弱点，她们害怕马群，并且她们易受到铁的伤害，这是唯一已知的可以杀死她们的物质。</span></p><p><span>The most popular tale of the Baobhan Sith tells the story of a young group of hunters, who stopped for the night in a small hunting lodge. The men built a fire, and began eating and drinking, expressing general merriment after a good day’s hunt. As they begin to voice how nice it would be to have the company of women, there is a knock at the door. Four beautiful women stand in the doorway, having become lost in the wilderness and ask if they may join the men in their shelter for the night.The men, silently congratulating themselves on their good fortunes, invite the women in. After a while the women express a wish to dance, and the men waste no time in asking them, the four men coupled off perfectly. Soon, the dancing becomes more vagarious, and before the men know what has happened, the Baobhan Sith have slit the throats of all but one man, who was nearest the door. He bolted as soon as he realised what was happening, and ran over to the horses in a frenzy. It was here he realised the Baobhan Sith were not venturing near the horses. The man stood, weary eyed, among the animals all night. Just before dawn, the women headed back towards the wild.The lone man cautiously headed back towards the hunting lodge, hearing no sound from within.  When he looked inside, he saw his three comrades dead on the floor, their skin almost translucent, as they lay in a pool of their own blood.</span></p><p><span>芭万·希最受欢迎的故事，讲了一群在狩猎小屋过夜的年轻猎人的故事。男人们建了个篝火，然后开始吃喝，在一天的狩猎后说说笑笑。当他们开始说，“如果有女人陪伴就好了”时，就有敲门声响起。四个漂亮的女人站在门处，她们在野外迷路了并询问能否加入那些男人，进他们的庇护所过夜。男人们暗自庆幸他们的好运，并邀请女人们进入。一会儿后女人们说想跳舞，而男人们毫不犹豫地邀请她们，四个人完美地配合在一起。不久，舞蹈变得越来越奇怪，在男人们明白发生了什么之前，芭万·希们划开了除了离门最近的男人以外所有男人的脖子。离门最近的男人明白发生了什么后立即逃跑，疯狂地向马群跑去。就是在这他意识到了芭万·希不敢靠近马群。那个男人在动物当中彻夜未眠地站了一整晚。在黎明前，女人回到了荒野。这个孤零零的男人小心翼翼地回到狩猎小屋，里面没有传出任何声音。当他朝里头看时，他看见他的三个同伴死在地板上，他们的皮肤是半透明的，躺在自己的血泊中。</span></p><p><span>本分割线均为译者的观点。</span></p><p><span>受限于文献获取渠道，有许多书无法获取到，还是很可惜的。不过芭万·希的形象基本上已经定型了，都是以人血为食的美丽女妖精。</span></p><p><span>而且实话实说，我老婆芭万希的资料可以说是非常少的，和她名字相近的ban shee（报丧女妖）则要出名得多，二者名字相近是因为其直译都是女妖精，只不过一个在苏格兰的传说，一个在爱尔兰的传说。我查阅了一些凯尔特神话（爱尔兰威尔士地区）的辞典，只能找到报丧女妖，而鲜有芭万·希。要找到芭万希还得去翻阅世界神话辞典，但是一般越广的书，讲某一事物就越浅。许多有名的书里甚至可能压根找不到芭万希的踪影。</span></p><p><span>芭万·希是苏格兰地区的知名妖精，但是即使在苏格兰的神话我也没有找到详细记录芭万·希的书或文献，有可能她本身只有那么些记录吧。 </span></p></div></div>
+</body>
+</html>
